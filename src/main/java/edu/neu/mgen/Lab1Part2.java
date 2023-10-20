@@ -11,21 +11,20 @@ public class Lab1Part2 {
         ArrayList<String> switchedNames = new ArrayList<>();
 
         for (String name : names) {
-            switchedNames.add(switchFirstAndLast(name));
+
+            String switched;
+            if (name.length() <= 1) {
+                switched = name;
+            }
+            char firstChar = name.charAt(name.length() - 1);
+            char lastChar = name.charAt(0);
+            String middle = name.substring(1, name.length() - 1);
+            switched = Character.toUpperCase(firstChar) + middle + Character.toLowerCase(lastChar);
+            switchedNames.add(switched);
         }
 
         System.out.println("Names = " + listToString(names));
         System.out.println("Names (switched) = " + listToString(switchedNames));
-    }
-
-    public static String switchFirstAndLast(String name) {
-        if (name.length() <= 1) {
-            return name;
-        }
-        char firstChar = name.charAt(name.length() - 1);
-        char lastChar = name.charAt(0);
-        String middle = name.substring(1, name.length() - 1);
-        return Character.toUpperCase(firstChar) + middle + Character.toLowerCase(lastChar);
     }
 
     public static String listToString(ArrayList<String> list) {
